@@ -1,8 +1,15 @@
+import { useState, useRef } from "react"
 function App() {
+  const inputRef = useRef(null)
+  const [todoItems, setTodoItems] = useState(localStorage.getItem(todos) || [])
+  function todoHandler() {
 
+
+  }
   return (
     <div>
-      <h1> Hello World! </h1>
+      <input type="text" onClick={todoHandler} ref={inputRef} />
+
     </div>
   )
 }
