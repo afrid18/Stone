@@ -1,6 +1,7 @@
 {
-  "name": "temp",
-  "private": true,
+  "name": "Stone",
+  "private": false,
+  "homepage": "https://stone.afrid.in",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
