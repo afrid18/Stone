@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import "./App.css"
 function App() {
@@ -5,7 +6,6 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("")
   const [todoItems, setTodoItems] = useState(JSON.parse(localStorage.getItem('todos')) || [])
   function todoHandler(e) {
-
     e.preventDefault();
     const todo = inputRef.current.value;
     if (!todo) {
