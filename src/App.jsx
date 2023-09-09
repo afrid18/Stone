@@ -1,51 +1,46 @@
-
 import { useState, useRef, useEffect } from "react";
-import "./App.css"
-function App() {
-  const inputRef = useRef(null)
-  const [errorMsg, setErrorMsg] = useState("")
-  const [todoItems, setTodoItems] = useState(JSON.parse(localStorage.getItem('todos')) || [])
-  function todoHandler(e) {
-    e.preventDefault();
-    const todo = inputRef.current.value;
-    if (!todo) {
-      setErrorMsg("please add todo..")
-      return
-    }
-    setTodoItems((prev) => {
-      return [...prev, { 'text': todo, timeStamp: new Date().toLocaleTimeString() }]
-    })
+import AddTodoForm from "./AddTodoForm";
+import TodoList from "./TodoList";
+import "./App.css";
 
+function App() {
+  const [errorMsg, setErrorMsg] = useState("");
+  const [todoItems, setTodoItems] = useState(
+    JSON.parse(localStorage.getItem("todos")) || [],
+  );
+
+  function toggleTodo(id, completed) {
+    console.log(completed);
+    setTodoItems((currTodos) => {
+      return currTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed };
+        }
+        return todo;
+      });
+    });
+    console.log(todoItems);
   }
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todoItems))
-    inputRef.current.value = "";
-    setErrorMsg("")
-  }, [todoItems])
-
+    localStorage.setItem("todos", JSON.stringify(todoItems));
+    setErrorMsg("");
+  }, [todoItems]);
 
   return (
     <>
       <h1 className="heading">Make things Happen</h1>
       <div className="todo">
         <p className="error">{errorMsg}</p>
-        <form className="row a-center j-ccenter">
-          <label htmlFor="todoItem" >Toodo</label>
-          <input type="text" className="todo__input" id="todoItem" ref={inputRef} />
-          <button className="todo__add-btn" onClick={todoHandler}>Add</button>
-        </form>
-        <ul role="list" className="todo__list">
-          {
-            todoItems.map((todo) => {
-              return <li key={todo.timeStamp} className="todo__item"><span className="todo__text">{todo.text}</span><span title="added time" className="todo__date">{todo.timeStamp}</span></li>
-            })
-          }
-        </ul>
-
+        <AddTodoForm setTodoItems={setTodoItems} setErrorMsg={setErrorMsg} />
+        <TodoList
+          todoItems={todoItems}
+          toggleTodo={toggleTodo}
+          setTodoItems={setTodoItems}
+        />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
