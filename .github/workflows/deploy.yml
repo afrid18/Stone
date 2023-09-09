@@ -21,11 +21,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to Vercel (Production)
-        uses: amondnet/vercel-action@v19
+        uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} 
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }} 
-          vercel-args: '--prod'
-          alias-domains: 'stone.afrid.in'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
