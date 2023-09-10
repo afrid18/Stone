@@ -12,6 +12,7 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 jobs:
   deploy:
+    if: github.repository == 'afrid18/Stone'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
