@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [todoItems, setTodoItems] = useState(
-    JSON.parse(localStorage.getItem("todos")) || [],
+    JSON.parse(localStorage.getItem("todos")) || []
   );
 
   function toggleTodo(id, completed) {
