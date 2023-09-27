@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 import "./App.css";
@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [todoItems, setTodoItems] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
+    JSON.parse(localStorage.getItem("todos")) || [],
   );
 
   function toggleTodo(id, completed) {
