@@ -5,9 +5,7 @@ on:
             -   main
     workflow_dispatch:
 jobs:
-    deploy:
-        if: github.repository == 'gunaInit/gh-actions'
-        
+
     build:
         runs-on: node-latest
 
