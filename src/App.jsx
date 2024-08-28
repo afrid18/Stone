@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">Make things Happen</h1>
+      <h1 className="heading">Your Todos</h1>
       <div className="todo">
         <p className="error">{errorMsg}</p>
         <AddTodoForm setTodoItems={setTodoItems} setErrorMsg={setErrorMsg} />
