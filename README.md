@@ -8,3 +8,5 @@ A Todo App with simplicity.
 # Milestone 2
 
 - [ ] Add login and signup
+
+Kiran Dinesh
