@@ -1,7 +1,8 @@
-import { useRef } from "react";
-
-export default function AddTodoForm({ setTodoItems, setErrorMsg }) {
+import { useRef, useContext } from "react";
+import { setTodoContext } from "../context";
+export default function AddTodoForm({ setErrorMsg }) {
   const inputRef = useRef(null);
+  const {setTodoItems} = useContext(setTodoContext);
 
   function todoHandler(e) {
     e.preventDefault();

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import { setTodoContext } from "./context";
+import AddTodoForm from "./components/AddTodoForm";
+import TodoList from "./components/TodoList";
 import "./App.css";
 
 function App() {
@@ -32,12 +33,12 @@ function App() {
       <h1 className="heading">Your Todos</h1>
       <div className="todo">
         <p className="error">{errorMsg}</p>
-        <AddTodoForm setTodoItems={setTodoItems} setErrorMsg={setErrorMsg} />
-        <TodoList
-          todoItems={todoItems}
-          toggleTodo={toggleTodo}
-          setTodoItems={setTodoItems}
-        />
+        <setTodoContext.Provider value = {{todoItems, setTodoItems}}>
+          <AddTodoForm setErrorMsg={setErrorMsg} />
+          <TodoList
+            toggleTodo={toggleTodo}
+          />
+        </setTodoContext.Provider>
       </div>
     </>
   );

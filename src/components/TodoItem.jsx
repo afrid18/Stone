@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import {setTodoContext} from '../context';
+
 export default function TodoItem(props) {
-  const { id, completed, text, timeStamp, toggleTodo, setTodoItems } = props;
+  const { id, completed, text, timeStamp, toggleTodo } = props;
+  const {setTodoItems} = useContext(setTodoContext);
 
   function deleteTodo(id) {
     setTodoItems((currTodos) => {
