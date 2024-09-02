@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import {setTodoContext} from '../context';
+import { useSetRecoilState } from "recoil";
+import { todoState } from "../store/todoState";
 
 export default function TodoItem(props) {
   const { id, completed, text, timeStamp, toggleTodo } = props;
-  const {setTodoItems} = useContext(setTodoContext);
+  const setTodoItems = useSetRecoilState(todoState);
 
   function deleteTodo(id) {
     setTodoItems((currTodos) => {

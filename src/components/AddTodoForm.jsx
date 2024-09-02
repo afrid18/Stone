@@ -1,8 +1,10 @@
-import { useRef, useContext } from "react";
-import { setTodoContext } from "../context";
+import { useSetRecoilState } from "recoil";
+import { useRef } from 'react'
+import { todoState } from "../store/todoState";
+
 export default function AddTodoForm({ setErrorMsg }) {
   const inputRef = useRef(null);
-  const {setTodoItems} = useContext(setTodoContext);
+  const setTodoItems = useSetRecoilState(todoState);
 
   function todoHandler(e) {
     e.preventDefault();
