@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { setTodoContext } from "./context";
+import { useRecoilState } from "recoil";
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
+import { todoState } from "./store/todoState";
 import "./App.css";
 
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
-  const [todoItems, setTodoItems] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
-  );
+  const [todoItems, setTodoItems] = useRecoilState(todoState);
 
   function toggleTodo(id, completed) {
     console.log(completed);
@@ -33,12 +32,10 @@ function App() {
       <h1 className="heading">Your Todos</h1>
       <div className="todo">
         <p className="error">{errorMsg}</p>
-        <setTodoContext.Provider value = {{todoItems, setTodoItems}}>
           <AddTodoForm setErrorMsg={setErrorMsg} />
           <TodoList
             toggleTodo={toggleTodo}
           />
-        </setTodoContext.Provider>
       </div>
     </>
   );

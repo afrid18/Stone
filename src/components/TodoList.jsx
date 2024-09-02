@@ -1,10 +1,10 @@
 import TodoItem from "./TodoItem";
-import { useContext } from "react";
-import {setTodoContext} from '../context';
+import { useRecoilValue } from "recoil";
+import { todoState } from "../store/todoState";
+
 
 export default function TodoList({toggleTodo}) {
-  
-  const {todoItems} = useContext(setTodoContext);
+  const todoItems = useRecoilValue(todoState);
 
   return (
     <ul role="list" className="todo__list">
