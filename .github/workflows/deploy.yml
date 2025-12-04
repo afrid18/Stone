@@ -14,10 +14,10 @@ jobs:
     if: github.repository == 'afrid18/Stone'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
           cache: npm
       - name: install Vercel CLI
         run: npm install --global vercel@latest
